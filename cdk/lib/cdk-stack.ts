@@ -61,26 +61,12 @@ export class CdkStack extends cdk.Stack {
       ],
     });
 
-    const amplifyBranch = new CfnBranch(this, "AmplifyBranch", {
+    new CfnBranch(this, "AmplifyBranch", {
       appId: amplifyApp.attrAppId,
       branchName: 'main',
       framework: "Next.js - SSR",
       enableAutoBuild: false,
     });
-
-    const amplifyDomain = new CfnDomain(this, "AmplifyDomain", {
-      appId: amplifyApp.attrAppId,
-      domainName: 'compilebook.com',
-      subDomainSettings: [
-        {
-          branchName: 'feature',
-          prefix: "admin",
-        },
-      ],
-      enableAutoSubDomain: false,
-    });
-
-    amplifyDomain.addDependency(amplifyBranch);
   }
 }
 
