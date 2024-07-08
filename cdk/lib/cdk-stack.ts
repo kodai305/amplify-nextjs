@@ -32,7 +32,7 @@ export class CdkStack extends cdk.Stack {
             frontend: {
               phases: {
                 preBuild: {
-                  commands: ["npm run setup", "yarn install"],
+                  commands: ["npm install"],
                 },
                 build: {
                   commands: [
